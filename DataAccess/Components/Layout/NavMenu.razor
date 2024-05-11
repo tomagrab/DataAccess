@@ -1,0 +1,23 @@
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+
+<aside class="h-screen w-40 bg-darkgray">
+    <div class="p-4 pr-0">
+        <div class="flex items-center justify-center">
+            <button @onclick="GoHome" class="btn-home btn-base flex gap-2">
+                <i class="fa-solid fa-database"></i> Data Access
+            </button>
+        </div>
+        <nav class="flex flex-col gap-2 py-4">
+            @* Todo: Add navigation links here *@
+        </nav>
+    </div>
+</aside>
+
+@code
+{
+    private void GoHome()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+}
