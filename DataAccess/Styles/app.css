@@ -17,16 +17,17 @@ body {
   @apply flex justify-end;
 }
 
-.btn {
-  @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+.btn,
+.btn-home {
+  @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-white;
 }
 
 .btn-home {
-  @apply font-bold text-white drop-shadow-lg inline-flex items-center justify-center whitespace-nowrap rounded-md ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-5 bg-blue hover:bg-blue/90;
+  @apply font-bold text-white drop-shadow-lg;
 }
 
 .btn-primary {
-  @apply bg-brightBlue hover:bg-blue/90;
+  @apply bg-blue hover:bg-blue/90;
 }
 
 .btn-secondary {
