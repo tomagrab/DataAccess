@@ -12,7 +12,7 @@ public class SqlDataAccess
     {
         _configuration = configuration;
     }
-    public async Task<IEnumerable<T>> LoadData<T, U>
+    public async Task<IEnumerable<T>> LoadDataAsync<T, U>
     (
         string storedProcedure,
         U parameters,
@@ -32,7 +32,7 @@ public class SqlDataAccess
 
         return rows;
     }
-    public async Task SaveData<T>
+    public async Task SaveDataAsync<T>
     (
         string storedProcedure,
         T parameters,
