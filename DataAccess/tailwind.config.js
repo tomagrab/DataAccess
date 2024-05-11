@@ -1,0 +1,35 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./**/*.{razor,html}"],
+  theme: {
+    extend: {
+      colors: {
+        backdrop: "#090c10",
+        darkgray: "#484f58",
+        blue: "#58a6ff",
+        brightBlack: "#6e7681",
+        brightBlue: "#79c0ff",
+        brightCyan: "#56d4dd",
+        brightGreen: "#56d364",
+        brightPurple: "#d2a8ff",
+        brightRed: "#ffa198",
+        brightWhite: "#f0f6fc",
+        brightYellow: "#e3b341",
+        cursorColor: "#b1bac4",
+        cyan: "#39c5cf",
+        foreground: "#8b949e",
+        green: "#3fb950",
+        purple: "#bc8cff",
+        red: "#ff7b72",
+        selectionBackground: "#b1bac4",
+        yellow: "#d29922",
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+      },
+    },
+  },
+  plugins: [],
+};
