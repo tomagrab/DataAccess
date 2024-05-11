@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build">
+  <Sdk Name="Microsoft.Build.Sql" Version="0.1.12-preview" />
+  <PropertyGroup>
+    <Name>DataAccessDB</Name>
+    <ProjectGuid>{60FC7461-145A-4093-9031-AEA265A8D14A}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
+    <ModelCollation>1033, CI</ModelCollation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="StoreProcedures" />
+    <Folder Include="Tables" />
+  </ItemGroup>
+  <Target Name="BeforeBuild">
+    <Delete Files="$(BaseIntermediateOutputPath)\project.assets.json" />
+  </Target>
+</Project>
