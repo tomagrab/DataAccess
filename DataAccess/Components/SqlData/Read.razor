@@ -1,0 +1,44 @@
+@page "/read-people"
+@inject IPeopleData peopleData
+@rendermode InteractiveServer
+
+<h3>Read People</h3>
+
+@if (people == null)
+{
+    <div class="flex items-center justify-center">
+        <i class="fa-sharp fa-thin fa-loader fa-5x animate-spin"></i>
+    </div>
+}
+else
+{
+    <div class="grid">
+        <QuickGrid Items="@PeopleQuery">
+            <TemplateColumn Title="Edit">
+                @* Correct implementation of dynamic href generation *@
+                <a @key="context.Id" href="@GetEditUrl(context)" class="cursor-pointer">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a>
+            </TemplateColumn>
+            <PropertyColumn Property="@(p => p.FirstName)" Sortable="true" />
+            <PropertyColumn Property="@(p => p.LastName)" Sortable="true" />
+        </QuickGrid>
+    </div>
+}
+
+@code {
+    private IEnumerable<PersonModel>? people;
+    private IQueryable<PersonModel>? PeopleQuery => people?.AsQueryable();
+    
+    private string GetEditUrl(PersonModel person) => $"/update-person/{person.Id}";
+
+    private async Task GetAllPeopleAsync()
+    {
+        people = await peopleData.GetAllPeople();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetAllPeopleAsync();
+    }
+}

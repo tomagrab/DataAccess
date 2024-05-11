@@ -9,6 +9,19 @@ public class PeopleData : IPeopleData
     {
         _sql = sql;
     }
+    public async Task InsertPerson(PersonModel person)
+    {
+        await _sql.SaveDataAsync
+        (
+            "dbo.spPeople_Insert",
+            new
+            {
+                person.FirstName,
+                person.LastName
+            },
+            "Default"
+        );
+    }
     public async Task<IEnumerable<PersonModel>> GetAllPeople()
     {
         var people = await _sql.LoadDataAsync<PersonModel, dynamic>
@@ -20,25 +33,23 @@ public class PeopleData : IPeopleData
 
         return people;
     }
+    public async Task<PersonModel> GetPersonById(int id)
+    {
+        var people = await _sql.LoadDataAsync<PersonModel, dynamic>
+        (
+            "dbo.spPeople_GetById",
+            new { Id = id },
+            "Default"
+        );
+
+        return people.FirstOrDefault();
+    }
     public async Task UpdatePerson(PersonModel person)
     {
         await _sql.SaveDataAsync
         (
             "dbo.spPeople_Update",
             person,
-            "Default"
-        );
-    }
-    public async Task InsertPerson(PersonModel person)
-    {
-        await _sql.SaveDataAsync
-        (
-            "dbo.spPeople_Insert",
-            new
-            {
-                person.FirstName,
-                person.LastName
-            },
             "Default"
         );
     }

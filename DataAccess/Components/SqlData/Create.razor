@@ -1,5 +1,6 @@
 ﻿@page "/create-person"
 @inject IPeopleData peopleData
+@inject NavigationManager NavigationManager
 @rendermode InteractiveServer
 
 <h3>Create Person</h3>
@@ -26,5 +27,6 @@
     {
         await peopleData.InsertPerson(person);
         person = new PersonModel();
+        NavigationManager.NavigateTo("/read-people");
     }
 }
