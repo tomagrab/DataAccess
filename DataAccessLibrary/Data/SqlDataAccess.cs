@@ -3,9 +3,9 @@ using Dapper;
 using System.Data;
 using Microsoft.Data.SqlClient;
 
-namespace DataAccessLibrary;
+namespace DataAccessLibrary.Data;
 
-public class SqlDataAccess
+public class SqlDataAccess : ISqlDataAccess
 {
     private readonly IConfiguration _configuration;
     public SqlDataAccess(IConfiguration configuration)

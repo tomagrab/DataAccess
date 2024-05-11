@@ -1,4 +1,6 @@
-﻿namespace DataAccessLibrary.Modals;
+﻿using DataAccessLibrary.Models;
+
+namespace DataAccessLibrary.Data;
 
 public class PeopleData : IPeopleData
 {

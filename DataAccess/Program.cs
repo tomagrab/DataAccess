@@ -1,4 +1,6 @@
 using DataAccess.Components;
+using DataAccessLibrary;
+using DataAccessLibrary.Modals;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+
+builder.Services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
+builder.Services.AddSingleton<IPeopleData, PeopleData>();
 
 var app = builder.Build();
 
