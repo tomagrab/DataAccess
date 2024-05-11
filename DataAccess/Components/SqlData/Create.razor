@@ -1,9 +1,10 @@
-﻿@inject IPeopleData peopleData
+﻿@page "/create-person"
+@inject IPeopleData peopleData
 @rendermode InteractiveServer
 
 <h3>Create Person</h3>
 
-<EditForm Model="@person" OnValidSubmit="@CreatePerson">
+<EditForm Model="@person" method="POST" FormName="CreatePersonForm" OnValidSubmit="@CreatePerson">
     <DataAnnotationsValidator />
     <ValidationSummary />
 

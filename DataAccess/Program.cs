@@ -1,6 +1,5 @@
 using DataAccess.Components;
-using DataAccessLibrary;
-using DataAccessLibrary.Modals;
+using DataAccessLibrary.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
