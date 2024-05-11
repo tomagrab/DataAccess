@@ -620,6 +620,10 @@ video {
   gap: 0.5rem;
 }
 
+.gap-4 {
+  gap: 1rem;
+}
+
 .overflow-auto {
   overflow: auto;
 }
@@ -630,6 +634,10 @@ video {
 
 .rounded-md {
   border-radius: 0.375rem;
+}
+
+.border {
+  border-width: 1px;
 }
 
 .bg-background {
