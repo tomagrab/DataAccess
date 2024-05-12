@@ -42,10 +42,15 @@ else
                 <button @key="context.Id" class="cursor-pointer">
                     <i class="fa-solid fa-trash-can" @onclick="@ShowModal"></i>
                 </button>
+                <Modal
+                    Title="@ModalTitle"
+                    Message="@ModalMessage"
+                    IsVisible="@IsModalVisible" IsVisibleChanged="@HandleVisibilityChanged"
+                    ConfirmAction="@(() => DeletePerson(context))"
+                />
             </TemplateColumn>
         </QuickGrid>
     </div>
-    <Modal Title="@ModalTitle" Message="@ModalMessage" IsVisible="@IsModalVisible" IsVisibleChanged="@HandleVisibilityChanged"/>
 }
 
 @code {
@@ -56,6 +61,7 @@ else
     {
         await peopleData.DeletePerson(person.Id);
         await GetAllPeopleAsync();
+        IsModalVisible = false;
     }
     private async Task GetAllPeopleAsync()
     {

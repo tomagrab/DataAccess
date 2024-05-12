@@ -11,6 +11,9 @@
                 <p>@Message</p>
             </div>
             <button class="btn btn-base btn-primary" @onclick="Hide">Close</button>
+            <button class="btn btn-base btn-destructive">
+                Confirm
+            </button>
         </div>
     </div>
 }
@@ -27,6 +30,8 @@
 
     [Parameter]
     public EventCallback<bool> IsVisibleChanged { get; set; }
+    [Parameter]
+    public EventCallback ConfirmAction { get; set; }
     private string ModalClass => IsVisible ? "modal modal-enter-active" : "modal modal-exit-active";
 
     private async Task Hide()
