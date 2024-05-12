@@ -45,19 +45,22 @@ else
             </TemplateColumn>
         </QuickGrid>
     </div>
+    <Modal />
 }
 
 @code {
     private IEnumerable<PersonModel>? people;
     private IQueryable<PersonModel>? PeopleQuery => people?.AsQueryable();
-    
     private string GetEditUrl(PersonModel person) => $"/update-person/{person.Id}";
-
+    private async Task DeletePerson(PersonModel person)
+    {
+        await peopleData.DeletePerson(person.Id);
+        await GetAllPeopleAsync();
+    }
     private async Task GetAllPeopleAsync()
     {
         people = await peopleData.GetAllPeople();
     }
-
     protected override async Task OnInitializedAsync()
     {
         await GetAllPeopleAsync();
