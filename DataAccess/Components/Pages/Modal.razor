@@ -3,17 +3,20 @@
 @if (IsVisible)
 {
     <div class="modal-overlay" @onclick="Hide">
-        <div class="@ModalClass">
-            <div class="modal-header">
-                <h2 class="modal-title">@Title</h2>
+        <div class="modal-container" @onclick:stopPropagation="true">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2 class="modal-title">@Title</h2>
+                    <button class="modal-close-button" @onclick="Hide">X</button>
+                </div>
+                <div class="modal-body">
+                    <p>@Message</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-base btn-primary" @onclick="Hide">Close</button>
+                    <button @onclick="@ConfirmAction" class="btn btn-base btn-destructive">Confirm</button>
+                </div>
             </div>
-            <div class="modal-body">
-                <p>@Message</p>
-            </div>
-            <button class="btn btn-base btn-primary" @onclick="Hide">Close</button>
-            <button class="btn btn-base btn-destructive">
-                Confirm
-            </button>
         </div>
     </div>
 }
@@ -32,7 +35,6 @@
     public EventCallback<bool> IsVisibleChanged { get; set; }
     [Parameter]
     public EventCallback ConfirmAction { get; set; }
-    private string ModalClass => IsVisible ? "modal modal-enter-active" : "modal modal-exit-active";
 
     private async Task Hide()
     {
