@@ -1,0 +1,51 @@
+@page "/virtualization"
+@inject IPeopleData peopleData
+@rendermode InteractiveServer
+
+<PageTitle>Virtualization</PageTitle>
+
+<h1 class="text-3xl font-bold">
+    virtualization
+</h1>
+
+<p class="text-lg py-4">
+    Virtualization is a technique used to improve the performance of rendering large lists of data. This page demonstrates the use of virtualization in Blazor.
+</p>
+
+<div class="flex flex-col">
+    <div class="shadow-md border rounded p-4">
+        <table class="table-auto w-full">
+            <thead>
+                <tr>
+                    <th class="text-left">First Name</th>
+                    <th class="text-left">Last Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var person in people)
+                {
+                    <tr>
+                        <td>@person.FirstName</td>
+                        <td>@person.LastName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@code
+{
+    private List<PersonModel> people = new List<PersonModel>();
+    protected override void OnInitialized()
+    {
+        for (int i = 0; i < 1000; i++)
+        {
+            people.Add(new PersonModel
+            {
+                FirstName = $"First Name {i}",
+                LastName = $"Last Name {i}"
+            });
+        }
+    }
+}
