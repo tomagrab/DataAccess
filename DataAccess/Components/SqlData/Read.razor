@@ -40,12 +40,12 @@ else
             </TemplateColumn>
             <TemplateColumn>
                 <button @key="context.Id" class="cursor-pointer">
-                    <i class="fa-solid fa-trash-can"></i>
+                    <i class="fa-solid fa-trash-can" @onclick="@ShowModal"></i>
                 </button>
             </TemplateColumn>
         </QuickGrid>
     </div>
-    <Modal />
+    <Modal Title="@ModalTitle" Message="@ModalMessage" IsVisible="@IsModalVisible" IsVisibleChanged="@HandleVisibilityChanged"/>
 }
 
 @code {
@@ -64,5 +64,23 @@ else
     protected override async Task OnInitializedAsync()
     {
         await GetAllPeopleAsync();
+    }
+    private string ModalTitle = "Delete Person";
+    private string ModalMessage = "Are you sure you want to delete this person?";
+        private bool IsModalVisible;
+
+    private void ShowModal()
+    {
+        IsModalVisible = true;
+    }
+
+    private async Task HandleVisibilityChanged(bool isVisible)
+    {
+        if (IsModalVisible != isVisible)
+        {
+            IsModalVisible = isVisible;
+            // Optionally, you can trigger further actions here, such as refreshing data or logging.
+        }
+        await Task.CompletedTask;
     }
 }
