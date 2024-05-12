@@ -36,18 +36,18 @@
     The app is built with the following technologies:
 </p>
 
-<ul class="pb-4 list-disc pl-4">
+<ul class="pb-4 list-disc pl-8">
     <li>
-        <a href="https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor" class="text-blue hover:underline">Blazor</a>
+        <a href="https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor" class="text-blue font-bold hover:underline">Blazor</a>
     </li>
     <li>
-        <a href="https://dotnet.microsoft.com/en-us/download/dotnet/8.0" class="text-blue hover:underline">.NET 8</a>
+        <a href="https://dotnet.microsoft.com/en-us/download/dotnet/8.0" class="text-blue font-bold hover:underline">.NET 8</a>
     </li>
     <li>
-        <a href="https://www.learndapper.com/" class="text-blue hover:underline">Dapper</a>
+        <a href="https://www.learndapper.com/" class="text-blue font-bold hover:underline">Dapper</a>
     </li>
     <li>
-        <a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads" class="text-blue hover:underline">SQL Server</a>
+        <a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads" class="text-blue font-bold hover:underline">SQL Server</a>
     </li>
 </ul>
 
@@ -61,6 +61,20 @@
     to add the person to the database.
 </p>
 
+<p class="text-lg pb-4">
+    The create page is built using Blazor's
+    <a
+        href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.components.forms.editform?view=aspnetcore-8.0"
+        class="text-blue font-bold hover:underline"
+    >
+        EditForm
+    </a>
+    component. The EditForm
+    component is used to create a form that allows you to add a new person to
+    the database. The form is validated on the client side using Blazor's
+    built-in validation features.
+</p>
+
 <h2 id="read-heading" class="text-2xl font-bold">
     Read
 </h2>
@@ -68,6 +82,19 @@
 <p class="text-lg py-4">
     The read page displays all people in the database. You can click the edit
     button to update a person or the delete button to remove a person.
+</p>
+
+<p class="text-lg pb-4">
+    The read page is built using Blazor's
+    <a
+        href="https://aspnet.github.io/quickgridsamples/"
+        class="text-blue font-bold hover:underline"
+    >
+        QuickGrid
+    </a>
+    component. The ComponentBase class is used to create a component that displays
+    all people in the database. The component uses Dapper to query the database
+    and display the results in a table.
 </p>
 
 <h2 id="update-heading" class="text-2xl font-bold">
@@ -80,12 +107,28 @@
     to save the changes.
 </p>
 
+<p class="text-lg pb-4">
+    The update page is built using Blazor's
+    <a
+        href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.components.forms.editform?view=aspnetcore-8.0"
+        class="text-blue font-bold hover:underline"
+    >
+        EditForm
+    </a>
+    component. The EditForm
+    component is used to create a form that allows you to edit a person in the
+    database. The form is validated on the client side using Blazor's built-in
+    validation features.
+</p>
+
 <h2 id="delete-heading" class="text-2xl font-bold">
     Delete
 </h2>
 
 <p class="text-lg py-4">
-    The delete page allows you to remove a person from the database. You can
-    click the delete button to remove a person from the database.
+    Unlike the CRU pages, the delete feature does not have a dedicated page.
+    Instead, the delete feature is implemented on the read page. You can click
+    the delete button to be prompted with a modal dialog asking if you want to
+    delete the person. If you click the delete button in the modal dialog, the
+    person will be removed from the database.
 </p>
-
