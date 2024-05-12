@@ -3,18 +3,31 @@
 @inject NavigationManager NavigationManager
 @rendermode InteractiveServer
 
-<div class="flex flex-col items-center">
-    <EditForm Model="@person" method="POST" FormName="CreatePersonForm" OnValidSubmit="@CreatePerson" class="flex flex-col items-center shadow border rounded p-4">
-        <h3>Create Person</h3>
+<PageTitle>Create Person</PageTitle>
+
+<h1 class="text-3xl font-bold">
+    create person
+</h1>
+
+<p class="text-lg py-4">
+    The form below allows you to create a new person. Upon valid submission,
+    the person will be added to the database. Additionally, you will be
+    redirected to the read page.
+</p>
+
+<div class="flex flex-col">
+    <EditForm Model="@person" method="POST" FormName="CreatePersonForm" OnValidSubmit="@CreatePerson" class="flex-1 flex flex-col items-center gap-4 shadow-md border rounded p-4 bg-darkgray">
+        <h3 class="text-white font-bold">Create Person</h3>
         <DataAnnotationsValidator />
-        <ValidationSummary />
 
         <div class="form-group">
-            <InputText id="FirstName" class="form-control" @bind-Value="person.FirstName" placeholder="First name" />
+            <InputText id="FirstName" class="input" @bind-Value="person.FirstName" placeholder="First name" />
+            <ValidationMessage For="@(() => person.FirstName)" class="error-text"/>
         </div>
 
         <div class="form-group">
-            <InputText id="LastName" class="form-control" @bind-Value="person.LastName" placeholder="Last name"/>
+            <InputText id="LastName" class="input" @bind-Value="person.LastName" placeholder="Last name" />
+            <ValidationMessage For="@(() => person.LastName)" class="error-text" />
         </div>
         <button type="submit" class="btn btn-primary btn-base">Create</button>
     </EditForm>
